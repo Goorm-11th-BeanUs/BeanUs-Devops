@@ -4,10 +4,10 @@ resources:
 #  - mariadb.yaml
   - backend.yaml
 #  - frontend.yaml
-#configMapGenerator:
-#  - name: nginx
-#    files:
-#      - configs/default.conf
+configMapGenerator:
+  - name: nginx
+    files:
+      - configs/default.conf
 #  - name: init-db
 #    files:
 #      - configs/init.sql
