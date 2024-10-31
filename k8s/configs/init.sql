@@ -32,6 +32,7 @@ CREATE TABLE `collect_rule`
     `weekday` int(10) NOT NULL,
     `time` varchar(5) NOT NULL,
     `amount` int(11) NOT NULL,
+    `position` varchar(100) NOT NULL,
     `created_at` datetime not null default CURRENT_TIMESTAMP,
     `updated_at` datetime not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
