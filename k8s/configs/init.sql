@@ -8,19 +8,20 @@ USE `goorm`;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `token` varchar(100) NOT NULL,
+    `id` varchar(100) NOT NULL,
+    `cafe_id` int(11) NOT NULL AUTO_INCREMENT,
+    `password` varchar(100) NOT NULL,
     `name` varchar(100) NOT NULL,
     `address` varchar(100) NOT NULL,
     `phone_number` varchar(100) NOT NULL,
-    `role` varchar(100),
     `created_at` datetime not null default CURRENT_TIMESTAMP,
     `updated_at` datetime not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
-    INDEX idx_user (`id`, `token`, `role`)
+    UNIQUE INDEX idx_user (`id`, `cafe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO user (`token`,`name`,`address`,`phone_number`,`role`) VALUES ('ThisIsToken', '스타벅스', '제주특별자치도 제주시', '010-1111-2222', '사장님');
+INSERT INTO user (`id`,`password`, `name`,`address`,`phone_number`) VALUES ('test', 'test', 'test cafe', '010-1111-2222');
+INSERT INTO user (`id`,`password`, `name`,`address`,`phone_number`) VALUES ('test2', 'test2', 'test2 cafe', '010-1112-2223');
 
 
 
@@ -62,11 +63,11 @@ CREATE TABLE `collect_transaction`
     INDEX idx_collect_transaction (`id`, `cafe_id`, `time`, `status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-10-01T09:00:00.000000+09:00', 10, 'COMPLETED');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-10-02T09:00:00.000000+09:00', 10, 'COMPLETED');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-10-03T09:00:00.000000+09:00', 10, 'COMPLETED');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-11-01T09:00:00.000000+09:00', 10, 'READY');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-11-03T09:00:00.000000+09:00', 10, 'WAITING');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (11, 'ABC 양로원', '2024-10-05T09:00:00.000000+09:00', 10, 'COMPLETED');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (11, 'ABC 양로원', '2024-10-06T09:00:00.000000+09:00', 10, 'COMPLETED');
-INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (12, 'ABC 양로원', '2024-11-07T09:00:00.000000+09:00', 10, 'WAITING');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-10-01 09:00:00', 10, 'COMPLETED');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-10-02 09:00:00', 10, 'COMPLETED');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-10-03 09:00:00', 10, 'COMPLETED');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-11-01 09:00:00', 10, 'READY');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (10, 'ABC 양로원', '2024-11-03 09:00:00', 10, 'WAITING');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (11, 'ABC 양로원', '2024-10-05 09:00:00', 10, 'COMPLETED');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (11, 'ABC 양로원', '2024-10-06 09:00:00', 10, 'COMPLETED');
+INSERT INTO collect_transaction (`cafe_id`,`client_name`,`time`,`amount`,`status`) VALUES (12, 'ABC 양로원', '2024-11-07 09:00:00', 10, 'WAITING');
