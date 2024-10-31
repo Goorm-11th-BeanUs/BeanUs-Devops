@@ -11,17 +11,17 @@ CREATE TABLE `user` (
     `id` varchar(100) NOT NULL,
     `cafe_id` int(11) NOT NULL AUTO_INCREMENT,
     `password` varchar(100) NOT NULL,
-    `name` varchar(100) NOT NULL,
-    `address` varchar(100) NOT NULL,
-    `phone_number` varchar(100) NOT NULL,
+    `name` varchar(100),
+    `address` varchar(100),
+    `phone_number` varchar(100),
     `created_at` datetime not null default CURRENT_TIMESTAMP,
     `updated_at` datetime not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`cafe_id`),
     UNIQUE INDEX idx_user (`id`, `cafe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO user (`id`,`password`, `name`,`address`,`phone_number`) VALUES ('test', 'test', 'test cafe', '010-1111-2222');
-INSERT INTO user (`id`,`password`, `name`,`address`,`phone_number`) VALUES ('test2', 'test2', 'test2 cafe', '010-1112-2223');
+INSERT INTO user (`id`,`password`, `name`,`address`,`phone_number`) VALUES ('test', 'test', 'test cafe', '제주특별자치도 제주시', '010-1111-2222');
+INSERT INTO user (`id`,`password`, `name`,`address`,`phone_number`) VALUES ('test2', 'test2', 'test2 cafe', '제주특별자치도 서귀포시', '010-1112-2223');
 
 
 
